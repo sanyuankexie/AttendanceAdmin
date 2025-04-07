@@ -34,6 +34,6 @@ jobs:
       - name: Build and Push Docker image with version tag and latest
         run: |
           docker buildx build --platform linux/amd64 \
-            -t ${{ secrets.DOCKER_REGISTRY_URL }}/kexie-at-web:$TAG \
-            -t ${{ secrets.DOCKER_REGISTRY_URL }}/kexie-at-web:latest \
+            -t ${{ secrets.DOCKER_REGISTRY_URL }}/kexie-at-admin:$TAG \
+            -t ${{ secrets.DOCKER_REGISTRY_URL }}/kexie-at-admin:latest \
             --push -f Dockerfile .
