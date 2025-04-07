@@ -41,6 +41,7 @@
       <el-header class="header">
         <div class="header-title">{{ currentRouteTitle }}</div>
         <div class="header-subTitle">管理员用户：{{ id }}</div>
+        <el-button color="red" @click="exit">退出</el-button>
       </el-header>
 
       <el-main>
@@ -59,6 +60,10 @@ import { Utils } from '@/utils/decrypt.js'
 const route = useRoute()
 
 const id = Utils.decrypt(localStorage.getItem('id'), 'kexieisbest')
+
+const exit = () => {
+  localStorage.clear()
+}
 
 const currentRouteTitle = computed(() => {
   return route.meta.title || '管理系统'

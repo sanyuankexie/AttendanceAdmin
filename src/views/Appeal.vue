@@ -206,7 +206,6 @@ import { ref, reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
 import dayjs from 'dayjs'
 import http from '@/utils/axios.js'
-import axios from 'axios'
 import { Utils } from '@/utils/decrypt.js'
 
 // 状态映射
@@ -252,19 +251,11 @@ const handleForm = reactive({
   failedReason: ''
 })
 
-const client = axios.create({
-  baseURL: '/local', // 从环境变量获取
-  timeout: 10000, // 请求超时时间
-  headers: {
-    'Content-Type': 'application/json;charset=UTF-8'
-  }
-})
-
 // 加载数据
 const loadData = async () => {
   try {
     loading.value = true
-    const res = await client.get('/api/appeal/getAppeal')
+    const res = await http.get('/api/appeal/getAppeal')
     appealList.value = res.data.data
     pagination.total = res.data.data.length
   } catch (error) {
@@ -292,8 +283,7 @@ const submitHandle = async () => {
       operatorId: Utils.decrypt(localStorage.getItem("id"), 'kexieisbest'),
       result: handleForm.result
     }
-    console.log(params)
-    const res = await client.post('/api/appeal/dealAppeal', params)
+    const res = await http.post('/api/appeal/dealAppeal', params)
     if (res.data.code === 0) {
       ElMessage.success('处理成功')
       detailVisible.value = false

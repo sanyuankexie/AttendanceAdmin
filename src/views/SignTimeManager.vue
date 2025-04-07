@@ -74,9 +74,6 @@ const submitForm = async () => {
 
     const response = await http('/api/user/modify', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
       data: JSON.stringify(payload)
     })
 

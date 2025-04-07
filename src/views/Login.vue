@@ -36,8 +36,8 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import http from '@/utils/axios.js'
 
 const router = useRouter()
 const form = reactive({
@@ -53,11 +53,10 @@ const rules = {
 const handleLogin = async () => {
   // 模拟登录成功
   const client = axios.create({
-    baseURL: '/local', // 从环境变量获取
+    baseURL: '/api', // 从环境变量获取
     timeout: 10000, // 请求超时时间
   })
-  console.log(form.value)
-  const res = await client.post('/api/user/login', {
+  const res = await http.post('/api/user/login', {
     id: Number(form.id),
     password: form.password
   })
