@@ -62,6 +62,7 @@ const route = useRoute()
 const id = Utils.decrypt(localStorage.getItem('id'), 'kexieisbest')
 
 const exit = () => {
+  console.log('退出')
   localStorage.clear()
 }
 

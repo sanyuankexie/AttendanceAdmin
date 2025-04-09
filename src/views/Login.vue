@@ -52,10 +52,6 @@ const rules = {
 
 const handleLogin = async () => {
   // 模拟登录成功
-  const client = axios.create({
-    baseURL: '/api', // 从环境变量获取
-    timeout: 10000, // 请求超时时间
-  })
   const res = await http.post('/api/user/login', {
     id: Number(form.id),
     password: form.password
