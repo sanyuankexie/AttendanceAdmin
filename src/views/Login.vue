@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import http from '@/utils/axios.js'

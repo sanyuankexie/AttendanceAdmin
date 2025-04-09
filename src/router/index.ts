@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import AddMember from '@/views/AddMember.vue'
 import SubMember from '@/views/SubMember.vue'
 import SignTimeManager from '@/views/SignTimeManager.vue'
@@ -46,7 +46,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
 

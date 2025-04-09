@@ -56,14 +56,16 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { Minus, Plus } from '@element-plus/icons-vue'
 import { Utils } from '@/utils/decrypt.js'
+import router from '@/router/index.js'
 
 const route = useRoute()
 
 const id = Utils.decrypt(localStorage.getItem('id'), 'kexieisbest')
 
-const exit = () => {
+const exit = async () => {
   console.log('退出')
   localStorage.clear()
+  await router.push('/login')
 }
 
 const currentRouteTitle = computed(() => {
